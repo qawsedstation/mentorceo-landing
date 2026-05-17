@@ -31,9 +31,12 @@ jobs:
       - name: Setup Cloudflare credentials
         run: |
           mkdir -p $HOME/.config/.wrangler/config
-          echo "oauth_token = \"${{ secrets.CF_OAUTH_TOKEN }}\"" > $HOME/.config/.wrangler/config/default.toml
+          printf 'oauth_token = "%s"\nrefresh_token = "%s"\nexpiration_time = "2027-05-17T21:25:11.216Z"\n' \
+            "${{ secrets.CF_OAUTH_TOKEN }}" \
+            "${{ secrets.CF_WRANGLER_REFRESH_TOKEN }}" \
+            > $HOME/.config/.wrangler/config/default.toml
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler@3 pages deploy out --project-name=mentorceo-landing --branch=main --commit-dirty=true
+        run: npx wrangler@4.18.0 pages deploy out --project-name=mentorceo-landing --branch=main --commit-dirty=true
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
