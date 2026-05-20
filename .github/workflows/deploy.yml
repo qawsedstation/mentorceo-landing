@@ -31,13 +31,6 @@ jobs:
       - name: Deploy to Cloudflare Pages
         run: npx wrangler@4.18.0 pages deploy out --project-name=mentorceo-landing --branch=main --commit-dirty=true
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_PAGES_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-      - name: Add custom domain
-        run: |
-          npx wrangler@4.18.0 pages domain add mentorceo-landing mentorceo.io || true
-          npx wrangler@4.18.0 pages domain add mentorceo-landing www.mentorceo.io || true
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_PAGES_API_TOKEN }}
+          CLOUDFLARE_API_KEY: ${{ secrets.CF_GLOBAL_API_KEY }}
+          CLOUDFLARE_EMAIL: qawsedstation@gmail.com
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
