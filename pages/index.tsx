@@ -76,22 +76,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Mentor logos */}
-        <section className="bg-gray-50 py-10">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-sm text-gray-400 uppercase tracking-widest mb-6">Learn from the minds behind</p>
-            <div className="flex items-center justify-center gap-8 flex-wrap text-gray-400 font-semibold text-sm">
-              <span>Alex Hormozi</span>
-              <span>·</span>
-              <span>Naval Ravikant</span>
-              <span>·</span>
-              <span>Paul Graham</span>
-              <span>·</span>
-              <span>Gary Vaynerchuk</span>
-              <span>·</span>
-              <span>Jason Lemkin</span>
-              <span>·</span>
-              <span>April Dunford</span>
+        {/* Mentor section */}
+        <section className="py-16" style={{ background: '#0F172A' }}>
+          <div className="max-w-5xl mx-auto px-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-center mb-10" style={{ color: '#4B5563' }}>Learn from the minds behind</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {[
+                { initials: 'AH', name: 'Alex Hormozi', role: 'Sales & Scaling', color: '#1E4EFF' },
+                { initials: 'NR', name: 'Naval Ravikant', role: 'Investing & Wealth', color: '#7C3AED' },
+                { initials: 'PG', name: 'Paul Graham', role: 'Startups & Product', color: '#059669' },
+                { initials: 'GV', name: 'Gary Vaynerchuk', role: 'Marketing & Brand', color: '#DC2626' },
+                { initials: 'JL', name: 'Jason Lemkin', role: 'SaaS Growth', color: '#D97706' },
+                { initials: 'AD', name: 'April Dunford', role: 'Positioning', color: '#0284C7' },
+              ].map(m => (
+                <div key={m.initials} className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0" style={{ background: m.color, opacity: 0.9 }}>
+                    {m.initials}
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm leading-tight">{m.name}</div>
+                    <div className="text-xs mt-0.5" style={{ color: '#6B7280' }}>{m.role}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
